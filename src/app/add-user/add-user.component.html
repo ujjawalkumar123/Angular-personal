@@ -1,0 +1,32 @@
+<form class="example-form" (ngSubmit)="save(loginForm)" #loginForm="ngForm">
+    <!-- {{ emailID.value }}
+    <br> -->
+    <p class="mat-body-2" *ngIf="errFlag">Enter both Name and Contact</p>
+    <!-- <label for="email">Email </label> -->
+    <mat-form-field class="example-full-width">
+    <input 
+      matInput 
+      type="text" 
+      [(ngModel)]="adduser.name" 
+      name="name" 
+      #nameID="ngModel" 
+      placeholder="Name" 
+      required>
+    </mat-form-field>
+    <br>
+    <!-- <label for="password">Password </label> -->
+    <mat-form-field class="example-full-width">
+    <input
+      class="non"
+      matInput
+      type="text" 
+      pattern="^[2-9]\d{2}-\d{3}-\d{4}$"
+      [(ngModel)]="adduser.contact" 
+      name="contact" 
+      #contactID="ngModel"
+      placeholder="Contact"
+      required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit" >Save</button>
+  </form>
