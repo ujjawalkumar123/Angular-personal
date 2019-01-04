@@ -7,40 +7,40 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from 'src/app/add-user/add-user.component';
 
 export interface PeriodicElement {
-  name: string;
-  contact: string;
+  codeWordSetName: string;
+  count: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [{
-  name: "Ara McClaughlin",
-  contact: "160-122-6670"
+  codeWordSetName: "LOESTRIN 21 1.5/30",
+  count: 92
 }, {
-  name: "Winnifred Barwise",
-  contact: "379-420-4985"
+  codeWordSetName: "Indocyanine green",
+  count: 86
 }, {
-  name: "Herman Rizzardini",
-  contact: "883-312-1854"
+  codeWordSetName: "Promethazine Hydrochloride and Dextromethorphan Hydrobromide",
+  count: 98
 }, {
-  name: "Ansel Cestard",
-  contact: "273-107-8110"
+  codeWordSetName: "Colgate",
+  count: 50
 }, {
-  name: "Joshuah Brisland",
-  contact: "871-756-7944"
+  codeWordSetName: "CAULOPHYLLUM THALICTROIDES",
+  count: 76
 }, {
-  name: "Cherilynn Maydwell",
-  contact: "525-196-1461"
+  codeWordSetName: "Body Luxuries Strawberry Scented Waterless Anti Bacterial Hand gel",
+  count: 60
 }, {
-  name: "Cherice Ipsly",
-  contact: "583-421-2894"
+  codeWordSetName: "Infla",
+  count: 64
 }, {
-  name: "Traci Surr",
-  contact: "401-819-1548"
+  codeWordSetName: "GELNIQUE",
+  count: 92
 }, {
-  name: "Felicle Prout",
-  contact: "817-986-7878"
+  codeWordSetName: "Coconut",
+  count: 88
 }, {
-  name: "Marcel Gerrard",
-  contact: "662-804-9977"
+  codeWordSetName: "Venlafaxine Hydrochloride",
+  count: 81
 }];
 
 @Component({
@@ -49,7 +49,7 @@ const ELEMENT_DATA: PeriodicElement[] = [{
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'contact'];
+  displayedColumns: string[] = ['name', 'contact', 'btn'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -68,7 +68,7 @@ export class UserComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddUserComponent, {
-      width: '250px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -6,3 +6,20 @@ input.non::-webkit-inner-spin-button {
 input.non {
     -moz-appearance: textfield;
   }
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.btn-color{
+    background: #6ec8ff;
+}
+
+mat-toolbar{
+    background: white;
+}
+
+.alert-msg{
+    background: powderblue;
+    font-size: 14px;
+}

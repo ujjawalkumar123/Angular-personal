@@ -1,3 +1,10 @@
+<mat-toolbar>
+    <h2>Create Codeword Set</h2>
+    <span class="spacer"></span>
+    <button mat-raised-button class="btn-color"><i class="far fa-eye"></i> Hint</button>
+</mat-toolbar>
+
+
 <form class="example-form" (ngSubmit)="save(loginForm)" #loginForm="ngForm">
     <!-- {{ emailID.value }}
     <br> -->
@@ -10,23 +17,14 @@
       [(ngModel)]="adduser.name" 
       name="name" 
       #nameID="ngModel" 
-      placeholder="Name" 
+      placeholder="Codeword Set Name" 
       required>
     </mat-form-field>
     <br>
-    <!-- <label for="password">Password </label> -->
-    <mat-form-field class="example-full-width">
-    <input
-      class="non"
-      matInput
-      type="text" 
-      pattern="^[2-9]\d{2}-\d{3}-\d{4}$"
-      [(ngModel)]="adduser.contact" 
-      name="contact" 
-      #contactID="ngModel"
-      placeholder="Contact"
-      required>
-    </mat-form-field>
+    <input type="file">
     <br>
-    <button mat-raised-button color="primary" type="submit" >Save</button>
+    <br>
+    <mat-toolbar class="alert-msg"><p>No File is uploaded. Waiting for user to upload the CodeWord Set.</p></mat-toolbar>
+    <br>
+    <button mat-raised-button color="green" type="submit" >Create</button>
   </form>
