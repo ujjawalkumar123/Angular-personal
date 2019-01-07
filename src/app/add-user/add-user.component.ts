@@ -39,6 +39,11 @@ export class AddUserComponent implements OnInit {
 
   }
 
+  rowClicked(row: any): void {
+    console.log(row);
+    this.dialogRef.close()
+  }
+
 }
 
 @Component({

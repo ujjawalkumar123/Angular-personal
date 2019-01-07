@@ -11,6 +11,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +22,10 @@ import { UserComponent } from './user/user.component';
 import { AddUserComponent, AddUserSnackBarComponent } from './add-user/add-user.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CodewordsetComponent } from './codewordset/codewordset.component';
+import { CodewordsComponent } from './codewords/codewords.component';
+import { AddCourseComponent, AddCourseSnackBarComponent } from './add-course/add-course.component';
+import { CourseComponent } from './course/course.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AddUserComponent,
     NavBarComponent,
     AddUserSnackBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    CodewordsetComponent,
+    CodewordsComponent,
+    AddCourseComponent,
+    AddCourseSnackBarComponent,
+    CourseComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,12 +56,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatPaginatorModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatFormFieldModule,
+    MatSelectModule,
     FormsModule    
   ],
   providers: [],
   entryComponents: [
     AddUserComponent,
-    AddUserSnackBarComponent
+    AddUserSnackBarComponent,
+    AddCourseComponent,
+    AddCourseSnackBarComponent
+    
   ],
   bootstrap: [AppComponent]
 })

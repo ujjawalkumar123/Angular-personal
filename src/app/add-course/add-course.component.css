@@ -11,10 +11,6 @@ input.non {
     flex: 1 1 auto;
 }
 
-.btn-color{
-    background: #6ec8ff;
-}
-
 .btn-create{
     margin-left: 1em;
     background: green;

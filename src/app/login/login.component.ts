@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   onLogin(data){
     if(data.valid){
       console.log(data.value);
-      this.router.navigate(['/user'])
+      this.router.navigate(['/dashboard'])
     } else {
       this.errFlag = true;
       data.reset

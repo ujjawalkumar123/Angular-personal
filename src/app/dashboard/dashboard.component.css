@@ -4,10 +4,29 @@
 table {
     width: 100%;
   }
-.th{
+th{
     background: #03e049;
+    font-weight: bold;
+    font-size: 20px;
 }
   
 th.mat-sort-header-sorted {
 color: black;
 }
+
+/* Mat-Card css */
+.example-card {
+    max-width: 250px;
+    max-height: 300px;
+  }
+
+  .mat-raised-button{
+    background: green;
+    color: white;
+}
+  
+  .mat-header {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+    /* background: yellowgreen; */
+    }

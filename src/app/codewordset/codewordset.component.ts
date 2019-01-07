@@ -45,12 +45,12 @@ const ELEMENT_DATA: PeriodicElement[] = [{
 }];
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-codewordset',
+  templateUrl: './codewordset.component.html',
+  styleUrls: ['./codewordset.component.css']
 })
-export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'contact', 'btn'];
+export class CodewordsetComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'count', 'btn'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;

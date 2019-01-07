@@ -30,6 +30,10 @@
     <!-- <button type="button"  class="btn btn-danger">CANCEL</button>
     <button type="button" class="btn btn-success">CREATE</button>
     <button mat-raised-button class="md-icon-float md-button-right" type="submit" >Create</button> -->
-    <button mat-raised-button color="primary">Cancel</button>
-    <button mat-raised-button color="primary">Create</button>
+    <mat-toolbar>
+        <span class="spacer"></span>
+        <button class="btn-cancel" mat-raised-button (click)="rowClicked(row)">Cancel</button>
+        <button class="btn-create" mat-raised-button>Create</button>
+    </mat-toolbar>
+    
   </form>
