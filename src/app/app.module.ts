@@ -26,6 +26,7 @@ import { CodewordsetComponent } from './codewordset/codewordset.component';
 import { CodewordsComponent } from './codewords/codewords.component';
 import { AddCourseComponent, AddCourseSnackBarComponent } from './add-course/add-course.component';
 import { CourseComponent } from './course/course.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CourseComponent } from './course/course.component';
     CodewordsComponent,
     AddCourseComponent,
     AddCourseSnackBarComponent,
-    CourseComponent
+    CourseComponent,
+    TestComponent
     
   ],
   imports: [
