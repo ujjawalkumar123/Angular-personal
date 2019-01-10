@@ -45,8 +45,8 @@ export class AddCourseComponent implements OnInit {
 
     
     names: CodewordSetName[] = [
-      {value: 'Small Codeword Set'},
-      {value: 'Large Codeword Set'},
+      {value: "Small Codeword Set"},
+      {value: "Large Codeword Set"},
     ];
   
 
