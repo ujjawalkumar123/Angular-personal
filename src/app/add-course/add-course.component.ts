@@ -58,8 +58,8 @@ export class AddCourseComponent implements OnInit {
 }
 
 export interface CodewordSetName {
-  value: string;
-  viewValue: string;
+  value: String;
+  viewValue? : String;
 }
 
 

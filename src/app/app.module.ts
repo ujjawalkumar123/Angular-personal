@@ -26,6 +26,7 @@ import { CodewordsetComponent } from './codewordset/codewordset.component';
 import { CodewordsComponent } from './codewords/codewords.component';
 import { AddCourseComponent, AddCourseSnackBarComponent } from './add-course/add-course.component';
 import { CourseComponent } from './course/course.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { CourseComponent } from './course/course.component';
     MatSnackBarModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule    
+    FormsModule,
+    HttpClientModule 
   ],
   providers: [],
   entryComponents: [

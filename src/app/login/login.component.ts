@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,37 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   errFlag = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  onLogin(data){
-    if(data.valid){
+  onLogin(data) {
+    if (data.valid) {
       console.log(data.value);
-      this.router.navigate(['/dashboard'])
-    } else {
-      this.errFlag = true;
-      data.reset
+      this.userService
+        .validateEmail(data.value)
+        .subscribe(res => {
+          console.log(res)
+          if(res.message){
+          this.userService
+          .signin(data.value)
+          .subscribe(res => {
+            this.router.navigate(['/dashboard'])
+          },
+          err => {
+            console.log(err)
+            // alert("Invalid credentials");
+          })
+          }else{
+            alert('Invalid Email')
+          }
+        },
+        err => {
+          console.log(err)
+          // alert("Invalid credentials");
+        })
     }
-    
+
   }
 }
