@@ -22,17 +22,17 @@ export class LoginComponent implements OnInit {
         .validateEmail(data.value)
         .subscribe(res => {
           console.log(res)
-          if(res.message){
-          this.userService
-          .signin(data.value)
-          .subscribe(res => {
-            this.router.navigate(['/dashboard'])
-          },
-          err => {
-            console.log(err)
-            // alert("Invalid credentials");
-          })
-          }else{
+          if (res.message) {
+            this.userService
+              .signin(data.value)
+              .subscribe(res => {
+                this.router.navigate(['/dashboard'])
+              },
+              err => {
+                console.log(err)
+                // alert("Invalid credentials");
+              })
+          } else {
             alert('Invalid Email')
           }
         },
