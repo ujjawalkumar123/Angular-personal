@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from 'src/app/add-user/add-user.component';
 import { Router } from '@angular/router';
+import { Services } from 'src/app/services/services';
 
 export interface PeriodicElement {
   codeWordSetName: string;
@@ -51,14 +52,20 @@ const ELEMENT_DATA: PeriodicElement[] = [{
 })
 export class CodewordsetComponent implements OnInit {
   displayedColumns: string[] = ['name', 'count', 'btn'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor(public dialog: MatDialog, private router: Router) { }
+  constructor(public dialog: MatDialog, private router: Router, public service: Services) { 
+    
+  }
 
   ngOnInit() {
+     this.service.getCodewordSet()
+        .subscribe((data) =>{
+        this.dataSource = data['data'];
+      });
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
