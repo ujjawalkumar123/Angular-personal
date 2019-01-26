@@ -62,12 +62,16 @@ export class CodewordsetComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.service.getCodewordSet()
-        .subscribe((data) =>{
-        this.dataSource = data['data'];
-      });
+    this.fetchData();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  fetchData(){
+    this.service.getCodewordSet()
+    .subscribe((data) =>{
+    this.dataSource = data['data'];
+  });
   }
 
   applyFilter(filterValue: string) {
@@ -80,7 +84,17 @@ export class CodewordsetComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed ');
+      console.log(result);
+      this.service.saveCodewordSet(result)
+      .subscribe((data) => {
+        console.log(data);
+        console.log('success');
+        this.fetchData();
+      },
+      error => {
+        console.log('Error Occured');
+      });
       });
   }
 

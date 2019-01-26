@@ -12,4 +12,8 @@ export class Services {
     getCodewordSet(){
       return this.httpclient.get("http://localhost:3000/getCodewordSet")
     }
+
+    saveCodewordSet(data) {
+      return this.httpclient.post("http://localhost:3000/addCodewordSet", data)
+    }
 }

@@ -10,15 +10,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  
+
   errFlag = false;
   adduser = '';
 
   constructor(public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    public snackBar: MatSnackBar) { 
-      this.adduser = { ...data};
-    }
+    public snackBar: MatSnackBar) {
+    this.adduser = { ...data };
+  }
 
 
   ngOnInit() {
@@ -27,11 +27,11 @@ export class AddUserComponent implements OnInit {
   save(data) {
     if (data.valid) {
       console.log(data.value);
-      // this.router.navigate(['/user'])
+      
       this.snackBar.openFromComponent(AddUserSnackBarComponent, {
-      duration: 750,
-    });
-      this.dialogRef.close()
+        duration: 750,
+      });
+      this.dialogRef.close(data.value);
     } else {
       this.errFlag = true;
       data.reset
@@ -55,4 +55,4 @@ export class AddUserComponent implements OnInit {
     }
   `],
 })
-export class AddUserSnackBarComponent {}
+export class AddUserSnackBarComponent { }
