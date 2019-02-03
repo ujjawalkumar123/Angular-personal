@@ -6,11 +6,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from 'src/app/add-user/add-user.component';
 import { Router } from '@angular/router';
-import { Services } from 'src/app/services/services';
+// import { Services } from 'src/app/services/services';
+import { CodewordsetService } from 'src/app/services/codewordset.service';
 
 export interface PeriodicElement {
   codeWordSetName: string;
   count: number;
+  items? : any
 }
 
 // const ELEMENT_DATA: PeriodicElement[] = [{
@@ -56,22 +58,85 @@ export class CodewordsetComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
-  constructor(public dialog: MatDialog, private router: Router, public service: Services) { 
-    
+
+  constructor(public dialog: MatDialog, private router: Router, private codewordsetService: CodewordsetService) {
+
   }
 
   ngOnInit() {
     this.fetchData();
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+
   }
 
-  fetchData(){
-    this.service.getCodewordSet()
-    .subscribe((data) =>{
-    this.dataSource = data['data'];
-  });
+   // Getting the data from uploaded xls file
+  //  previewFiles () {
+  //   this.files = this.myFile
+  //   let data = new FormData(document.querySelector('form'))
+  //   axios.post('http://localhost:3000/codeword/getdataxlsx', data).then(response => {
+  //     console.log(response.data.data)
+  //     this.tcodeWordSetData = response.data.data
+  //     this.count = response.data.data.length
+  //   })
+  // },
+
+// Post call
+  // saveData() {
+  //   let data = new FormData(document.querySelector('form'))
+  //   let sendData = {
+  //     CodeWordSetName: data.get('dataSetName')
+  //   }
+  //   let sendData2 = {
+  //     CodeWordSetName: data.get('dataSetName'),
+  //     Codewords: this.tcodeWordSetData
+  //   }
+  //   this.codewordsetService.saveCodewordSet(data)
+  //     .subscribe((response) => {
+  //       let tempDataset = response.data;
+  //       this.codewordsetService.getCodewords(tempDataset)
+  //         .subscribe((response) => {
+  //           let resData = response['data'];
+  //           let dataT = []
+  //           for(var k in resData){
+  //             dataT.push({
+  //               codeWordSetName: k,
+  //                 count: resData[k].length,
+  //                 items : resData[k]
+  //             })
+  //           }
+  //           console.log(dataT)
+  //           this.dataSource.data =  dataT;
+            
+  //           this.dataSource.sort = this.sort;
+  //           this.dataSource.paginator = this.paginator;
+  //         })
+
+  //     });
+  // }
+
+// Get call
+  fetchData() {
+    this.codewordsetService.getCodewordSet()
+      .subscribe((response) => {
+        let tempDataset = response.data;
+        this.codewordsetService.getCodewords(tempDataset)
+          .subscribe((response) => {
+            let resData = response['data'];
+            let dataT = []
+            for(var k in resData){
+              dataT.push({
+                codeWordSetName: k,
+                  count: resData[k].length,
+                  items : resData[k]
+              })
+            }
+            console.log(dataT)
+            this.dataSource.data =  dataT;
+
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
+          })
+
+      });
   }
 
   applyFilter(filterValue: string) {
@@ -86,16 +151,16 @@ export class CodewordsetComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed ');
       console.log(result);
-      this.service.saveCodewordSet(result)
-      .subscribe((data) => {
-        console.log(data);
-        console.log('success');
-        this.fetchData();
-      },
-      error => {
-        console.log('Error Occured');
-      });
-      });
+      this.codewordsetService.saveCodewordSet(result)
+        .subscribe((data) => {
+          console.log(data);
+          console.log('success');
+          this.fetchData();
+        },
+        error => {
+          console.log('Error Occured');
+        });
+    });
   }
 
   rowClicked(row: any): void {

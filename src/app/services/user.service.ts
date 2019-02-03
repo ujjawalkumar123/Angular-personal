@@ -18,7 +18,7 @@ export class UserService {
           + '/codeword/signin', data)
     }
 
-    getCodewordSet(){
-      return this.httpclient.get("http://localhost:3000/getCodewordSet")
-    }
+    // getCodewordSet(){
+    //   return this.httpclient.get("http://localhost:3000/getCodewordSet")
+    // }
 }

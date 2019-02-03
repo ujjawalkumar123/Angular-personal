@@ -16,31 +16,33 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(data) {
-    // if (data.valid) {
-    //   console.log(data.value);
-    //   this.userService
-    //     .validateEmail(data.value)
-    //     .subscribe(res => {
-    //       console.log(res)
-    //       if (res.message) {
-    //         this.userService
-    //           .signin(data.value)
-    //           .subscribe(res => {
-    //             this.router.navigate(['/dashboard'])
-    //           },
-    //           err => {
-    //             console.log(err)
-    //              alert("Invalid credentials");
-    //           })
-    //       } else {
-    //         alert('Invalid Email')
-    //       }
-    //     },
-    //     err => {
-    //       console.log(err)
-    //       // alert("Invalid credentials");
-    //     })
-    // }
+    if (data.valid) {
+      console.log(data.value);
+      this.userService
+        .validateEmail(data.value)
+        .subscribe(res => {
+          console.log(res)
+          if (res && res.message) {
+            this.userService
+              .signin(data.value)
+              .subscribe(res => {
+                localStorage.setItem('token', res.token)
+                localStorage.setItem('status', res.isInstructor)
+                this.router.navigate(['/dashboard'])
+              },
+              err => {
+                console.log(err)
+                 alert("Invalid credentials");
+              })
+          } else {
+            alert('Invalid Email')
+          }
+        },
+        err => {
+          console.log(err)
+          // alert("Invalid credentials");
+        })
+    }
 
   }
 }
